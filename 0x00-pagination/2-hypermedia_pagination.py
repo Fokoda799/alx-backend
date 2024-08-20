@@ -53,3 +53,15 @@ class Server:
         if start >= len(self.__dataset):
             return []
         return self.__dataset[start:end]
+
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+        """ Get a page with hypermedia pagination """
+        n = self.get_page(page + 1, page_size)
+        return {
+            "page_size": page_size,
+            "page": page,
+            "data": self.get_page(page, page_size),
+            "next_page": page + 1 if n else None,
+            "prev_page": page - 1 if page > 1 else None,
+            "total_pages": math.ceil(len(self.__dataset) / page_size)
+        }
