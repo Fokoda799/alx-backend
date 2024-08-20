@@ -2,10 +2,10 @@
 """ Simple pagination """
 import csv
 import math
-from typing import List
+from typing import List, Tuple
 
 
-def index_range(page: int, page_size: int) -> tuple[int, int]:
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
     """
     Return a
     tuple of size two containing a start index and an end index
