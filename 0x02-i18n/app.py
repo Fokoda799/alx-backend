@@ -2,8 +2,9 @@
 """ Basic Flask app """
 
 from flask import Flask, render_template, request, g
-from flask_babel import Babel
+from flask_babel import Babel, format_datetime
 import pytz
+import datetime
 
 
 users = {
@@ -71,7 +72,8 @@ def before_request():
 @app.route('/', strict_slashes=False)
 def index() -> str:
     """ Returns: 7-index.html """
-    return render_template('7-index.html')
+    g.time = format_datetime()
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
